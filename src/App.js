@@ -1,9 +1,10 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "./Login";
-
+import ImpressivePage from "./ImpressivePage";
+import SignupPage from "./SignupPage";
 const App = () => {
   const handleLogin = (username, stayLoggedIn) => {
     // Your login logic here
@@ -13,12 +14,12 @@ const App = () => {
   return (
     <Router>
       <NavBar />
-      <Switch>
-        <Route path="/login">
-          <Login onLogin={handleLogin} />
-        </Route>
+      <Routes>
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         {/* Add other routes as needed */}
-      </Switch>
+        <Route path="/" element={<ImpressivePage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
     </Router>
   );
 };
